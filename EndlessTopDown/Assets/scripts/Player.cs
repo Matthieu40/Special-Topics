@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
 
     //Methods
-    void update()
+    void Update()
     {
         Plane playerPlane = new Plane(Vector3.up, transform.position); //plane that tracks camera position
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition); //player always faces direction of cursor
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
         if(playerPlane.Raycast(ray, out hitDist))
         {
+            Debug.Log("it worked");
             Vector3 targetPoint = ray.GetPoint(hitDist);
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
             targetRotation.x = 0;
@@ -27,8 +28,12 @@ public class Player : MonoBehaviour
 
         //player Movement
         if (Input.GetKey(KeyCode.W))
+        {
+            Debug.Log("it worked");
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-        
+        }
     }
+
+
 
 }
