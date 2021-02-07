@@ -6,8 +6,17 @@ public class Player : MonoBehaviour
 {
     //variables
     public float movementSpeed; //player movement speed
-    public GameObject camera; 
+    public GameObject Camera;
 
+    public GameObject PlayerObj;
+
+    public GameObject bulletSpawnPoint;
+    public float waitTime;
+    public GameObject bullet;
+
+    private Transform bulletSpawned;
+
+    public float points;
 
     //Methods
     void Update()
@@ -18,22 +27,42 @@ public class Player : MonoBehaviour
 
         if(playerPlane.Raycast(ray, out hitDist))
         {
-            Debug.Log("it worked");
+            //Debug.Log("it worked");
             Vector3 targetPoint = ray.GetPoint(hitDist);
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
             targetRotation.x = 0;
             targetRotation.z = 0;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 7f * Time.deltaTime);
+            PlayerObj.transform.rotation = Quaternion.Slerp(PlayerObj.transform.rotation, targetRotation, 7f * Time.deltaTime);
         }
 
         //player Movement
         if (Input.GetKey(KeyCode.W))
-        {
-            Debug.Log("it worked");
+            //Debug.Log("it worked");
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.A))
+            transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.S))
+            transform.Translate(Vector3.back * movementSpeed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.D))
+            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
+
+
+        //shooting
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
         }
+        
     }
 
+    void Shoot()
+    {
+        bulletSpawned = Instantiate(bullet.transform, bulletSpawnPoint.transform.position, Quaternion.identity);
+        bulletSpawned.rotation = bulletSpawnPoint.transform.rotation;
 
+    }
 
 }
