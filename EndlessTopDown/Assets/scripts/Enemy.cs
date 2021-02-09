@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     //Variables
     public float health;
-    public float pointsToGive;
+    public float pointsToGive;*+-
 
     public GameObject player;
 
@@ -31,6 +31,6 @@ public class Enemy : MonoBehaviour
     {
         Destroy(this.gameObject);
 
-        player.GetComponent<Player>().points += pointsToGive;
+        player.GetComponent<Player>().points += pointsToGive;//Distributes points to the player on death
     }
 }
