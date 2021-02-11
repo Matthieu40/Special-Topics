@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     //Variables
     public float health;
-    public float pointsToGive;*+-
+    public float pointsToGive;
 
     public GameObject player;
 
