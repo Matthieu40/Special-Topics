@@ -18,7 +18,15 @@ public class Player : MonoBehaviour
 
     public float points;
 
+    public float health;
+    public float maxHealth;
+
     //Methods
+
+    void Start()
+    {
+        health = maxHealth;
+    }
     void Update()
     {
         Plane playerPlane = new Plane(Vector3.up, transform.position); //plane that tracks camera position
@@ -55,7 +63,10 @@ public class Player : MonoBehaviour
         {
             Shoot();
         }
-        
+
+        //PlayerHealth
+        if (health <= 0)
+            Die();
     }
 
     void Shoot()
@@ -63,6 +74,11 @@ public class Player : MonoBehaviour
         bulletSpawned = Instantiate(bullet.transform, bulletSpawnPoint.transform.position, Quaternion.identity);
         bulletSpawned.rotation = bulletSpawnPoint.transform.rotation;
 
+    }
+
+    public void Die()
+    {
+        print("You have died");
     }
 
 }

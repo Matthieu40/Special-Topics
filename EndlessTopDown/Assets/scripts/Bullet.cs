@@ -10,6 +10,14 @@ public class Bullet : MonoBehaviour
     private GameObject triggeringEnemy;
     public float damage;
 
+    private GameObject player;
+
+   
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     void Update()
     {
         //moves bullet forward and controls bullet velocity
@@ -30,6 +38,11 @@ public class Bullet : MonoBehaviour
             triggeringEnemy = other.gameObject;
             triggeringEnemy.GetComponent<Enemy>().health -= damage;
             Destroy(this.gameObject);
+        }
+
+        if(other.tag == "Player")
+        {
+            player.GetComponent<Player>().health -= 20;
         }
     }
 }
