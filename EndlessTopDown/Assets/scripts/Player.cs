@@ -10,12 +10,9 @@ public class Player : MonoBehaviour
 
     public GameObject PlayerObj;
 
-    public GameObject bulletSpawnPoint;
-    public float waitTime;
-    public GameObject bullet;
-
-    private Transform bulletSpawned;
-
+    public Gun gun;
+    public float waitTime;//shooting related
+    
     public float points;
 
     public float health;
@@ -59,9 +56,12 @@ public class Player : MonoBehaviour
 
 
         //shooting
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Shoot"))
         {
-            Shoot();
+            gun.Shoot();
+        }else if (Input.GetButton("Shoot")) //if gun is automatic, continuous shooting will be active
+        {
+            gun.ShootContinuous();
         }
 
         //PlayerHealth
@@ -69,12 +69,7 @@ public class Player : MonoBehaviour
             Die();
     }
 
-    void Shoot()
-    {
-        bulletSpawned = Instantiate(bullet.transform, bulletSpawnPoint.transform.position, Quaternion.identity);
-        bulletSpawned.rotation = bulletSpawnPoint.transform.rotation;
 
-    }
 
     public void Die()
     {
