@@ -5,11 +5,16 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public enum GunType { single, burst, auto};//gun options (each one has different fire mode)//also creates dropdown on script settings
+
+    public float gunID;
     public GunType gunType;
     public float rpm;
 
-    public Transform spawn;
-    private LineRenderer tracer;
+    
+    public Transform spawn;//bullet spawn point
+    public Transform shellEjection; //bullet shell spawner
+    public Rigidbody shell;//bulletshell
+    private LineRenderer tracer;//bullet trajectory
     private float secondsBetweenShots;
     private float nextPossibleShootTime;
 
@@ -45,6 +50,8 @@ public class Gun : MonoBehaviour
                 StartCoroutine("RenderTracer", ray.direction * shotDistance);
             }
 
+            Rigidbody newShell = Instantiate(shell, shellEjection.position,Quaternion.identity) as Rigidbody;//creates instance of shell and spawns it at the right point
+            newShell.AddForce(shellEjection.forward * Random.Range(150f,200f) + spawn.forward * Random.Range(-10f,10f));
         }
     }
 

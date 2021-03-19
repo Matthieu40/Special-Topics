@@ -18,11 +18,16 @@ public class Player : MonoBehaviour
     public float health;
     public float maxHealth;
 
+    public Gun[] guns; //list of all possible guns
+    private Gun currentGun;
+    public Transform handHold;
     //Methods
 
     void Start()
     {
         health = maxHealth;
+
+        EquipGun(0);
     }
     void Update()
     {
@@ -56,12 +61,25 @@ public class Player : MonoBehaviour
 
 
         //shooting
-        if (Input.GetButtonDown("Shoot"))
+        if (currentGun)
         {
-            gun.Shoot();
-        }else if (Input.GetButton("Shoot")) //if gun is automatic, continuous shooting will be active
-        {
-            gun.ShootContinuous();
+            if (Input.GetButtonDown("Shoot"))
+            {
+                currentGun.Shoot();
+            }
+            else if (Input.GetButton("Shoot")) //if gun is automatic, continuous shooting will be active
+            {
+                currentGun.ShootContinuous();
+            }
+
+            for(int i = 0; i< guns.Length; i++)
+            {
+                if (Input.GetKeyDown((i + 1) + "") || Input.GetKeyDown("[" + (i+1) + "]"))
+                {
+                    EquipGun(i);
+                    break;
+                }
+            }
         }
 
         //PlayerHealth
@@ -70,6 +88,17 @@ public class Player : MonoBehaviour
     }
 
 
+    void EquipGun(int i)
+    {
+        if (currentGun)
+        {
+            Destroy(currentGun.gameObject);
+        }
+
+        currentGun = Instantiate(guns[i], handHold.position, handHold.rotation) as Gun;
+        currentGun.transform.parent = handHold;
+
+    }
 
     public void Die()
     {
