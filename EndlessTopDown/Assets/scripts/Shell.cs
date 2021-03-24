@@ -6,7 +6,7 @@ public class Shell : MonoBehaviour
 {
 
     private float fadeTime = 2;//timeperiod of shell lasting on the ground
-    private Material mat;
+    private Material mat;//Material value
     private Color originalCol;
     private float fadePercent;
     private float deathTime;
@@ -15,13 +15,14 @@ public class Shell : MonoBehaviour
     
     void Start()
     {
+        //Causes the bullets to gradually fade
         mat = GetComponent<Renderer>().material;
         originalCol = mat.color;
         deathTime = Time.time + fadeTime;
         StartCoroutine("Fade");
     }
 
-   
+   //conditional method for bullet fading
    IEnumerator Fade()
     {
         while (true)
@@ -49,6 +50,8 @@ public class Shell : MonoBehaviour
 
     private void OnTriggerEnter(Collider c)
     {
+        //fades the rigidbody of the shell
+
         if(c.tag == "Ground")
         {
             GetComponent<Rigidbody>().Sleep();
