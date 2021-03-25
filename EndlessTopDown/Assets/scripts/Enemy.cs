@@ -15,7 +15,7 @@ public class Enemy : Entity
 
     public override void Die()
     {
-        player.AddExperience(expVal);
+        player.AddExperience(expVal);//gives player exp on death
         base.Die();
     }
 }

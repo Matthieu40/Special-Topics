@@ -12,7 +12,7 @@ public class PlayerStats : Entity
     //methods
     void Start()
     {
-        levelUp();
+        levelUp();//Starts player at level1
     }
     public void AddExperience(float exp)//allows for exp gain
     {
