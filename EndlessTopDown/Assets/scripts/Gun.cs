@@ -6,9 +6,11 @@ public class Gun : MonoBehaviour
 {
     public enum GunType { single, burst, auto};//gun options (each one has different fire mode)//also creates dropdown on script settings
 
+    public LayerMask collisionMask;
     public float gunID;
     public GunType gunType;
     public float rpm;
+    public float damage = 1;
 
     
     public Transform spawn;//bullet spawn point
@@ -38,9 +40,14 @@ public class Gun : MonoBehaviour
             //ray travel dist
             float shotDistance = 20;
 
-            if (Physics.Raycast(ray, out hit, shotDistance))
+            if (Physics.Raycast(ray, out hit, shotDistance, collisionMask))
             {
                 shotDistance = hit.distance;
+
+                if (hit.collider.GetComponent<Entity>())//checks if bullet rays are hitting a valid target
+                {
+                    hit.collider.GetComponent<Entity>().TakeDamage(damage);//causes the bullets to do damage
+                }
             }
 
             nextPossibleShootTime = Time.time + secondsBetweenShots;

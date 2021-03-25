@@ -15,9 +15,6 @@ public class Player : MonoBehaviour
     
     public float points;
 
-    public float health;
-    public float maxHealth;
-
     public Gun[] guns; //list of all possible guns
     private Gun currentGun;
     public Transform handHold;
@@ -25,7 +22,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        health = maxHealth;
 
         EquipGun(0);
     }
@@ -82,9 +78,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        //PlayerHealth
-        if (health <= 0)
-            Die();
+        
     }
 
 
@@ -100,9 +94,5 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Die()
-    {
-        print("You have died");
-    }
-
+   
 }
