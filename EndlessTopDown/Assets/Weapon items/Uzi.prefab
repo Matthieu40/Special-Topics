@@ -246,6 +246,7 @@ MonoBehaviour:
   gunID: 2
   gunType: 2
   rpm: 600
+  damage: 1
   spawn: {fileID: 3063463115893709574}
   shellEjection: {fileID: 6537575098389664400}
   shell: {fileID: 4125544302003308197, guid: efa3a5b9b91a1d34ca0a64e12693a628, type: 3}
