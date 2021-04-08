@@ -103,6 +103,7 @@ MonoBehaviour:
   gunID: 0
   gunType: 0
   rpm: 600
+  damage: 1
   spawn: {fileID: 7705987380091829034}
   shellEjection: {fileID: 7705987380307405971}
   shell: {fileID: 4125544302003308197, guid: efa3a5b9b91a1d34ca0a64e12693a628, type: 3}

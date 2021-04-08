@@ -62,6 +62,7 @@
     <Compile Include="Assets\scripts\PlayerStats.cs" />
     <Compile Include="Assets\scripts\Enemy.cs" />
     <Compile Include="Assets\scripts\Gun.cs" />
+    <Compile Include="Assets\scripts\MeleeEnemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

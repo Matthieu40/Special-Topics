@@ -29,7 +29,7 @@ public class Enemy : Entity
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player Holder").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
