@@ -159,7 +159,7 @@ MonoBehaviour:
   timebetweenAttacks: 0.5
   gun: {fileID: 5143179529703949239}
   eHandHold: {fileID: 192430784}
-  sightRange: 20
+  sightRange: 100
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
