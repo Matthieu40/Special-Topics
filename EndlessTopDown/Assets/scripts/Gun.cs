@@ -71,6 +71,19 @@ public class Gun : MonoBehaviour
         }
     }
 
+    public string getGunType()
+    {
+        string type = "";
+        if (gunType == GunType.auto)
+        {
+            type = "auto"; 
+        }
+        if (gunType == GunType.single)
+        {
+            type = "single";
+        }
+        return type;
+    }
     private bool CanShoot()
     {
         bool canShoot = true;

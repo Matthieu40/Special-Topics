@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     public Gun[] guns; //list of all possible guns
     private Gun currentGun;
     public Transform handHold;
+    //gun type in UI
+    public Text gunText;
     //Methods
 
     void Start()
@@ -84,6 +87,7 @@ public class Player : MonoBehaviour
 
     void EquipGun(int i)
     {
+
         if (currentGun)
         {
             Destroy(currentGun.gameObject);
@@ -91,6 +95,16 @@ public class Player : MonoBehaviour
 
         currentGun = Instantiate(guns[i], handHold.position, handHold.rotation) as Gun;
         currentGun.transform.parent = handHold;
+        //checks guntype and displays to UI Text
+        if (currentGun.getGunType().Equals("auto"))
+        {
+            gunText.text = "Auto Fire";
+        }
+
+        if (currentGun.getGunType().Equals("single"))
+        {
+            gunText.text = "Single Fire";
+        }
 
     }
 

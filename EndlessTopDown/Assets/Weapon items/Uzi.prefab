@@ -243,7 +243,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 512
-  gunID: 2
+  gunID: 1
   gunType: 2
   rpm: 600
   damage: 1

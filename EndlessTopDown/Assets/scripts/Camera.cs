@@ -17,7 +17,7 @@ public class Camera : MonoBehaviour
     {
         Vector3 pos = new Vector3();
         pos.x = player.position.x;
-        pos.z = player.position.z - 4f; //how far the camera is behind the player (without 7f, camera is above player.)
+        pos.z = player.position.z - 7f; //how far the camera is behind the player (without 4f, camera is above player.)
         pos.y = player.position.y + height; //The + height lets the camera height be manipulated
         transform.position = Vector3.SmoothDamp(transform.position, pos, ref velocity, smooth);
     }
