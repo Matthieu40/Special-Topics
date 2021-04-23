@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : Entity
 {
@@ -15,6 +16,10 @@ public class PlayerStats : Entity
     public Image expBar;
     private float healthVal;
     public Text levelText;
+
+    //UI/gameOver stuff
+    public GameObject gameOverScreen;
+    public GameObject playerUI;
 
     //methods
     void Start()
@@ -69,5 +74,12 @@ public class PlayerStats : Entity
 
         AddExperience(0);
 
+    }
+
+    public override void Die()
+    {
+        gameOverScreen.SetActive(true);
+        playerUI.SetActive(false);
+        base.Die();
     }
 }
